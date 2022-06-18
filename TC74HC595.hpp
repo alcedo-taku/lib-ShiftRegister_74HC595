@@ -34,8 +34,8 @@ class TC74HC595 {
 public:
 	TC74HC595(GPIO SI_pin, GPIO SCK_pin, GPIO RCK_pin);
 	void update(uint8_t *pval, uint8_t number_of_ic);
+	void shift_out(BIT_ORDER bit_order, uint8_t val);
 private:
-	void shift_out(GPIO data_pin, GPIO clock_pin, BIT_ORDER bit_order, uint8_t val);
 	GPIO SI_pin;	//!< シリアル出力 ピン
 	GPIO SCK_pin;	//!< シフトレジスタクロック ピン
 	GPIO RCK_pin;	//!< ラッチクロック ピン
