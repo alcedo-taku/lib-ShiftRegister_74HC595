@@ -59,7 +59,8 @@ void TC74HC595::shift_out(BIT_ORDER bit_order, uint8_t val) {
 void TC74HC595::update(uint8_t *pval, uint8_t number_of_ic) {
 	HAL_GPIO_WritePin(RCK_pin.port, RCK_pin.pin, GPIO_PIN_RESET);
 	for (uint8_t i=0; i<number_of_ic; i++) {
-		shift_out(MSBFIRST, *(pval+(i*8)) );
+		shift_out(MSBFIRST, *(uint64_t*)pval >> (number_of_ic-1-i)*8);
+//		shift_out(MSBFIRST, *(pval-((number_of_ic-1-i)*8)) );
 	}
 	HAL_GPIO_WritePin(RCK_pin.port, RCK_pin.pin, GPIO_PIN_SET);
 }
