@@ -23,6 +23,14 @@ TC74HC595::TC74HC595(GPIO SI_pin, GPIO SCK_pin, GPIO RCK_pin
 }
 
 /**
+ * 初期化関数
+ */
+void TC74HC595::init(){
+	HAL_GPIO_WritePin(SR_SCK_GPIO_Port, SR_SCK_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(SR_RCK_GPIO_Port, SR_RCK_Pin, GPIO_PIN_SET);
+}
+
+/**
  * Arduino の shiftOut()関数をHAL環境用に書き直した関数
  * @param bit_order ビットを出力する開始する順序。MSBFIRST(MSBから開始)もしくはLSBFIRST（LSBから開始）を指定する
  * @param val データを取り出す値

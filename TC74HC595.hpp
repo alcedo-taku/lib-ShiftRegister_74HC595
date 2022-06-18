@@ -33,6 +33,7 @@ enum BIT_ORDER {
 class TC74HC595 {
 public:
 	TC74HC595(GPIO SI_pin, GPIO SCK_pin, GPIO RCK_pin);
+	void init();
 	void update(uint8_t *pval, uint8_t number_of_ic);
 	void shift_out(BIT_ORDER bit_order, uint8_t val);
 private:
